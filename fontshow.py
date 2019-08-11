@@ -10,10 +10,11 @@ n o p q r s t u v w x y z
 
 0 1 2 3 4 5 6 7 8 9
 
-# $ % & ' (
-) * + , - . /
+! " # $ % & '
+( ) * + , - . /
 : ; < = > ? @
-[ \ ] ^ _ ` ~
+[ \ ] ^ _ `
+{ | } ~
 
 
 """,
@@ -43,5 +44,9 @@ palette = [
  ]
 
 textbox = u.Text(text, align="center")
-loop = u.MainLoop(u.Filler(textbox), palette, unhandled_input=u.ExitMainLoop())
+
+def exit_mainloop(input):
+    raise u.ExitMainLoop
+
+loop = u.MainLoop(u.Filler(textbox), palette, unhandled_input=exit_mainloop)
 loop.run()
